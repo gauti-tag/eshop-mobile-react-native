@@ -16,7 +16,7 @@ const ProductContainer = () => {
             setProducts([]);
         }
     }, []);
-
+    console.log(products.map( i => i.id ));
     return (
         <View>
             <Text>
@@ -25,15 +25,14 @@ const ProductContainer = () => {
 
             <View style={{ marginTop: 100 }}>
                 <FlatList
-                    horizontal
+                    numColumns={2}
                     data={products}
-                    renderItem={({ item }) => <ProductList key={item.key} item={item.brand}/>} // <Text>{item.brand}</Text>
-                     keyExtractor={item => item.name}
+                    renderItem={ ({item})  => <ProductList key={item.id} item={item}/> }
+                    keyExtractor={item => item.name}
                 />
             </View>
         </View>
     )
-}
-
+};
 
 export default ProductContainer;
